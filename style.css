@@ -35,3 +35,10 @@ color:blue;
     right: 16px;
     font-size: 18px;
   }
+
+  ::selection {
+    background: #ff8800; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: #ff8800; /* Gecko Browsers */
+  }
