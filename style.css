@@ -1,6 +1,7 @@
 body{
+  background-image: url('https://media2.giphy.com/media/7goCZqFnYE20o/giphy.gif');
 background-color:yellow;
-color:blue;
+color:rgb(255, 0, 0);
 }
 .p3 {
     font-family: "Brush Script MT", cursive;
@@ -42,3 +43,11 @@ color:blue;
   ::-moz-selection {
     background: #ff8800; /* Gecko Browsers */
   }
+
+.dearestClient {
+    background-color: rgb(255, 123, 211);
+    width: 500px;
+    border: 15px solid rgb(42, 5, 250);
+    padding: 50px;
+    margin: 20px;
+}
