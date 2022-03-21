@@ -1,10 +1,22 @@
 <html>
-
-
+<!-- Start of HEAD -->
 <head>
+  <!-- The two links below import bootstrap and the Icon for the server. -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Title and the Below script set the title for the website.-->
 <title>I_see_you </title>
+<script type='text/javascript' src='bug-min.js'></script>
+<script type='text/javascript'>
+  // default fruit fly bug:
+  new BugController({
+  });
+
+  // default spiders:
+  new SpiderController({
+  });
+</script>
+<!-- Start of Title Animation Script-->
 <script type='text/javascript'>
     msg = document.title;
     msg = msg + ".";
@@ -18,10 +30,15 @@
     }
     scrolltitle();
     </script>
-<link rel="stylesheet" href="style.css">
+    <!-- end of title animation script-->
 
+    <!-- Links style.css to the webpage. Allows you to style your website.-->
+<link rel="stylesheet" href="style.css">
 </head>
+<!-- End of HEAD-->
+<!-- Start of BODY-->
 <body>
+  <!-- Start of Navigation Bar. Like where Home, Bubba etc are. -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">
         <a class="navbar-brand letters letters-1 letters letters-2 letters letters-3" href="#"><font color="yellow">PissCentral</font> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,31 +68,677 @@
                 <a class="dropdown-item" href="#" target="_blank">Hackerzman</a>
               </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Bugs.html">Bugs</a>
+              </li>
           </ul>
         </div>
       </nav>
+      <!-- End of Navigation Bar-->
+      <!-- Start of JUMBOTRON-->
       <div class="jumbotron bg-dark">
         <h1 style="text-shadow: 0 0 3px #000000;" class="display-4">Welcome to Spicy's <font color="yellow">Piss</font> basement. :)</h1>
         <p class="lead">This is where you will be sleeping. Enjoy maggots.</p>
         <p>Don't be afraid of Bubba tickling you, it'll only be for the nights coming.</p>
       </div>
+      <!-- End of JUMBOTRON-->
+      <!-- Start of your weird yellow text-->
 <h1>I see you piss, I see you shit, I see you when you go out to eat</h1>
+<!-- End of your weird yellow text-->
 <br>
 <br><br>
+
+<!-- Start of your Music Player thing.-->
 <div class="topright">
 <audio controls autoplay>
     <source src="bgmsc.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
   </div>
+  
+                                                  
+                                                <!-- this script is provided by www.javascriptfreecode.com coded by: Kerixa Inc. -->
+<div id="dot0" style="position: absolute; visibility: hidden; height: 11; width: 11;">
+	<img src="http://www.javascriptfreecode.com/images/heart.gif" height=11 width=11>
+</div>
+<div id="dot1" style="position: absolute; height: 11; width: 11;">
+	<img src="http://www.javascriptfreecode.com/images/heart.gif" height=11 width=11>
+</div>
+<div id="dot2" style="position: absolute; height: 11; width: 11;">
+	<img src="http://www.javascriptfreecode.com/images/heart.gif" height=11 width=11>
+</div>
+<div id="dot3" style="position: absolute; height: 11; width: 11;">
+	<img src="http://www.javascriptfreecode.com/images/heart.gif" height=11 width=11>
+</div>
+<div id="dot4" style="position: absolute; height: 11; width: 11;">
+	<img src="http://www.javascriptfreecode.com/images/heart.gif" height=11 width=11>
+</div>
+<div id="dot5" style="position: absolute; height: 11; width: 11;">
+	<img src="http://www.javascriptfreecode.com/images/heart.gif" height=11 width=11>
+</div>
+<div id="dot6" style="position: absolute; height: 11; width: 11;">
+	<img src="http://www.javascriptfreecode.com/images/heart.gif" height=11 width=11>
+</div>
+
+<script LANGUAGE="JavaScript">
+
+
+var nDots = 7;
+
+var Xpos = 0;
+var Ypos = 0;
+
+  // fixed time step, no relation to real time
+var DELTAT = .01;
+  // size of one spring in pixels
+var SEGLEN = 10;
+  // spring constant, stiffness of springs
+var SPRINGK = 10;
+  // all the physics is bogus, just picked stuff to
+  // make it look okay
+var MASS = 1;
+// Positive XGRAVITY pulls right, negative pulls left
+// Positive YGRAVITY pulls down, negative up
+var XGRAVITY = 0;
+var YGRAVITY = 50;
+// RESISTANCE determines a slowing force proportional to velocity
+var RESISTANCE = 10;
+  // stopping criterea to prevent endless jittering
+  // doesn't work when sitting on bottom since floor
+  // doesn't push back so acceleration always as big
+  // as gravity
+var STOPVEL = 0.1;
+var STOPACC = 0.1;
+var DOTSIZE = 11;
+  // BOUNCE is percent of velocity retained when 
+  // bouncing off a wall
+var BOUNCE = 0.75;
+
+var isNetscape = navigator.appName=="Netscape";
+
+  // always on for now, could be played with to
+  // let dots fall to botton, get thrown, etc.
+var followmouse = true;
+
+var dots = new Array();
+init();
+
+function init()
+{
+    var i = 0;
+    for (i = 0; i < nDots; i++) {
+        dots[i] = new dot(i);
+    }
+    
+    if (!isNetscape) {
+        // I only know how to read the locations of the 
+        // <LI> items in IE
+        //skip this for now
+        // setInitPositions(dots)
+    }
+    
+    // set their positions
+    for (i = 0; i < nDots; i++) {
+        dots[i].obj.left = dots[i].X;
+        dots[i].obj.top = dots[i].Y;
+    }
+    
+    
+    if (isNetscape) {
+        // start right away since they are positioned
+        // at 0, 0
+        startanimate();
+    } else {
+        // let dots sit there for a few seconds
+        // since they're hiding on the real bullets
+        setTimeout("startanimate()", 1000);
+    }
+}
+
+
+
+function dot(i) 
+{
+    this.X = Xpos;
+    this.Y = Ypos;
+    this.dx = 0;
+    this.dy = 0;
+    if (isNetscape) {	
+        this.obj = eval("document.dot" + i);
+    } else {
+        this.obj = eval("dot" + i + ".style");
+    }
+}
+
+
+function startanimate() {	
+    setInterval("animate()", 20);
+}
+
+
+// This is to line up the bullets with actual LI tags on the page
+// Had to add -DOTSIZE to X and 2*DOTSIZE to Y for IE 5, not sure why
+// Still doesn't work great
+function setInitPositions(dots)
+{
+    // initialize dot positions to be on top 
+    // of the bullets in the <ul>
+    var startloc = document.all.tags("LI");
+    var i = 0;
+    for (i = 0; i < startloc.length && i < (nDots - 1); i++) {
+        dots[i+1].X = startloc[i].offsetLeft
+            startloc[i].offsetParent.offsetLeft - DOTSIZE;
+        dots[i+1].Y = startloc[i].offsetTop +
+            startloc[i].offsetParent.offsetTop + 2*DOTSIZE;
+    }
+    // put 0th dot above 1st (it is hidden)
+    dots[0].X = dots[1].X;
+    dots[0].Y = dots[1].Y - SEGLEN;
+}
+
+// just save mouse position for animate() to use
+function MoveHandler(e)
+{
+    Xpos = e.pageX;
+    Ypos = e.pageY;	  
+    return true;
+}
+
+// just save mouse position for animate() to use
+function MoveHandlerIE() {
+    Xpos = window.event.x + document.body.scrollLeft;
+    Ypos = window.event.y + document.body.scrollTop;	  
+}
+
+if (isNetscape) {
+    document.captureEvents(Event.MOUSEMOVE);
+    document.onMouseMove = MoveHandler;
+} else {
+    document.onmousemove = MoveHandlerIE;
+}
+
+
+function vec(X, Y)
+{
+    this.X = X;
+    this.Y = Y;
+}
+
+// adds force in X and Y to spring for dot[i] on dot[j]
+function springForce(i, j, spring)
+{
+    var dx = (dots[i].X - dots[j].X);
+    var dy = (dots[i].Y - dots[j].Y);
+    var len = Math.sqrt(dx*dx + dy*dy);
+    if (len > SEGLEN) {
+        var springF = SPRINGK * (len - SEGLEN);
+        spring.X += (dx / len) * springF;
+        spring.Y += (dy / len) * springF;
+    }
+}
+
+
+function animate() {	
+    // dots[0] follows the mouse,
+    // though no dot is drawn there
+    var start = 0;
+    if (followmouse) {
+        dots[0].X = Xpos;
+        dots[0].Y = Ypos;	
+        start = 1;
+    }
+    
+    for (i = start ; i < nDots; i++ ) {
+        
+        var spring = new vec(0, 0);
+        if (i > 0) {
+            springForce(i-1, i, spring);
+        }
+        if (i < (nDots - 1)) {
+            springForce(i+1, i, spring);
+        }
+        
+        // air resisitance/friction
+        var resist = new vec(-dots[i].dx * RESISTANCE,
+            -dots[i].dy * RESISTANCE);
+        
+        // compute new accel, including gravity
+        var accel = new vec((spring.X + resist.X)/MASS + XGRAVITY,
+            (spring.Y + resist.Y)/ MASS + YGRAVITY);
+        
+        // compute new velocity
+        dots[i].dx += (DELTAT * accel.X);
+        dots[i].dy += (DELTAT * accel.Y);
+        
+        // stop dead so it doesn't jitter when nearly still
+        if (Math.abs(dots[i].dx) < STOPVEL &&
+            Math.abs(dots[i].dy) < STOPVEL &&
+            Math.abs(accel.X) < STOPACC &&
+            Math.abs(accel.Y) < STOPACC) {
+            dots[i].dx = 0;
+            dots[i].dy = 0;
+        }
+        
+        // move to new position
+        dots[i].X += dots[i].dx;
+        dots[i].Y += dots[i].dy;
+        
+        // get size of window
+        var height, width;
+        if (isNetscape) {
+            height = window.innerHeight + window.pageYOffset;
+            width = window.innerWidth + window.pageXOffset;
+        } else {	
+            height = document.body.clientHeight + document.body.scrollTop;
+            width = document.body.clientWidth + document.body.scrollLeft;
+        }
+        
+        // bounce off 3 walls (leave ceiling open)
+        if (dots[i].Y >=  height - DOTSIZE - 1) {
+            if (dots[i].dy > 0) {
+                dots[i].dy = BOUNCE * -dots[i].dy;
+            }
+            dots[i].Y = height - DOTSIZE - 1;
+        }
+        if (dots[i].X >= width - DOTSIZE) {
+            if (dots[i].dx > 0) {
+                dots[i].dx = BOUNCE * -dots[i].dx;
+            }
+            dots[i].X = width - DOTSIZE - 1;
+        }
+        if (dots[i].X < 0) {
+            if (dots[i].dx < 0) {
+                dots[i].dx = BOUNCE * -dots[i].dx;
+            }
+            dots[i].X = 0;
+        }
+        
+        // move img to new position
+        dots[i].obj.left = dots[i].X;			
+        dots[i].obj.top =  dots[i].Y;		
+    }
+}
+
+// end code hiding -->
+</script>                                                
+                                                       
+                                                  
+                                                <!-- this script is provided by www.javascriptfreecode.com coded by: Kerixa Inc. -->
+<script language="JavaScript1.2">
+
+  //Pre-load your image below!
+  grphcs=new Array(6)
+  Image0=new Image();
+  Image0.src=grphcs[0]="https://www.pngmart.com/files/14/L-Letter-PNG-Transparent.png";
+  Image1=new Image();
+  Image1.src=grphcs[1]="https://www.pngmart.com/files/14/L-Letter-PNG-Transparent.png"
+  Image2=new Image();
+  Image2.src=grphcs[2]="https://www.pngmart.com/files/14/L-Letter-PNG-Transparent.png"
+  Image3=new Image();
+  Image3.src=grphcs[3]="https://www.pngmart.com/files/14/L-Letter-PNG-Transparent.png"
+  Image4=new Image();
+  Image4.src=grphcs[4]="https://www.pngmart.com/files/14/L-Letter-PNG-Transparent.png"
+  Image5=new Image();
+  Image5.src=grphcs[5]="https://www.pngmart.com/files/14/L-Letter-PNG-Transparent.png" 
+  
+  Amount=8; //Smoothness depends on image file size, the smaller the size the more you can use!
+  Ypos=new Array();
+  Xpos=new Array();
+  Speed=new Array();
+  Step=new Array();
+  Cstep=new Array();
+  ns=(document.layers)?1:0;
+  ns6=(document.getElementById&&!document.all)?1:0;
+  
+  if (ns){
+  for (i = 0; i < Amount; i++){
+  var P=Math.floor(Math.random()*grphcs.length);
+  rndPic=grphcs[P];
+  document.write("<LAYER NAME='sn"+i+"' LEFT=0 TOP=0><img src="+rndPic+"></LAYER>");
+  }
+  }
+  else{
+  document.write('<div style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+  for (i = 0; i < Amount; i++){
+  var P=Math.floor(Math.random()*grphcs.length);
+  rndPic=grphcs[P];
+  document.write('<img id="si'+i+'" src="'+rndPic+'" style="position:absolute;top:0px;left:0px">');
+  }
+  document.write('</div></div>');
+  }
+  WinHeight=(ns||ns6)?window.innerHeight:window.document.body.clientHeight;
+  WinWidth=(ns||ns6)?window.innerWidth-70:window.document.body.clientWidth;
+  for (i=0; i < Amount; i++){                                                                
+   Ypos[i] = Math.round(Math.random()*WinHeight);
+   Xpos[i] = Math.round(Math.random()*WinWidth);
+   Speed[i]= Math.random()*5+3;
+   Cstep[i]=0;
+   Step[i]=Math.random()*0.1+0.05;
+  }
+  function fall(){
+  var WinHeight=(ns||ns6)?window.innerHeight:window.document.body.clientHeight;
+  var WinWidth=(ns||ns6)?window.innerWidth-70:window.document.body.clientWidth;
+  var hscrll=(ns||ns6)?window.pageYOffset:document.body.scrollTop;
+  var wscrll=(ns||ns6)?window.pageXOffset:document.body.scrollLeft;
+  for (i=0; i < Amount; i++){
+  sy = Speed[i]*Math.sin(90*Math.PI/180);
+  sx = Speed[i]*Math.cos(Cstep[i]);
+  Ypos[i]+=sy;
+  Xpos[i]+=sx; 
+  if (Ypos[i] > WinHeight){
+  Ypos[i]=-60;
+  Xpos[i]=Math.round(Math.random()*WinWidth);
+  Speed[i]=Math.random()*5+3;
+  }
+  if (ns){
+  document.layers['sn'+i].left=Xpos[i];
+  document.layers['sn'+i].top=Ypos[i]+hscrll;
+  }
+  else if (ns6){
+  document.getElementById("si"+i).style.left=Math.min(WinWidth,Xpos[i]);
+  document.getElementById("si"+i).style.top=Ypos[i]+hscrll;
+  }
+  else{
+  eval("document.all.si"+i).style.left=Xpos[i];
+  eval("document.all.si"+i).style.top=Ypos[i]+hscrll;
+  } 
+  Cstep[i]+=Step[i];
+  }
+  setTimeout('fall()',20);
+  }
+  
+  window.onload=fall
+  //-->
+  </script>                                                
+         
+                                                         
+ 
+<style type="text/css">
+#outerCircleText {
+font-style: Times New Roman;
+font-weight: bold;
+font-family: 'comic sans ms', verdana, times new roman;
+color: RED;
+position: absolute;top: 0;left: 0;z-index: 3000;cursor: default;}
+#outerCircleText div {position: relative;}
+#outerCircleText div div {position: absolute;top: 0;left: 0;text-align: center;}
+</style>
+<p>
+  <script type="text/javascript">
+
+
+;(function(){
+// Your message here (QUOTED STRING)
+var msg = " you cant escape  ";
+
+var size = 20;
+// Set both to 1 for plain circle, set one of them to 2 for oval
+// Other numbers & decimals can have interesting effects, keep these low (0 to 3)
+var circleY = 0.75; var circleX = 2;
+// The larger this divisor, the smaller the spaces between letters
+// (decimals allowed, not negative numbers)
+var letter_spacing = 5;
+// The larger this multiplier, the bigger the circle/oval
+// (decimals allowed, not negative numbers, some rounding is applied)
+var diameter = 10;
+// Rotation speed, set it negative if you want it to spin clockwise (decimals allowed)
+var rotation = 0.4;
+// This is not the rotation speed, its the reaction speed, keep low!
+// Set this to 1 or a decimal less than one (decimals allowed, not negative numbers)
+var speed = 0.3;
+////////////////////// Stop Editing //////////////////////
+if (!window.addEventListener && !window.attachEvent || !document.createElement) return;
+msg = msg.split('');
+var n = msg.length - 1, a = Math.round(size * diameter * 0.208333), currStep = 20,
+ymouse = a * circleY + 20, xmouse = a * circleX + 20, y = [], x = [], Y = [], X = [],
+o = document.createElement('div'), oi = document.createElement('div'),
+b = document.compatMode && document.compatMode != "BackCompat"? document.documentElement : document.body,
+mouse = function(e){
+ e = e || window.event;
+ ymouse = !isNaN(e.pageY)? e.pageY : e.clientY; // y-position
+ xmouse = !isNaN(e.pageX)? e.pageX : e.clientX; // x-position
+},
+makecircle = function(){ // rotation/positioning
+ if(init.nopy){
+  o.style.top = (b || document.body).scrollTop + 'px';
+  o.style.left = (b || document.body).scrollLeft + 'px';
+ };
+ currStep -= rotation;
+ for (var d, i = n; i > -1; --i){ // makes the circle
+  d = document.getElementById('iemsg' + i).style;
+  d.top = Math.round(y[i] + a * Math.sin((currStep + i) / letter_spacing) * circleY - 15) + 'px';
+  d.left = Math.round(x[i] + a * Math.cos((currStep + i) / letter_spacing) * circleX) + 'px';
+ };
+},
+drag = function(){ // makes the resistance
+ y[0] = Y[0] += (ymouse - Y[0]) * speed;
+ x[0] = X[0] += (xmouse - 20 - X[0]) * speed;
+ for (var i = n; i > 0; --i){
+  y[i] = Y[i] += (y[i-1] - Y[i]) * speed;
+  x[i] = X[i] += (x[i-1] - X[i]) * speed;
+ };
+ makecircle();
+},
+init = function(){ // appends message divs, & sets initial values for positioning arrays
+ if(!isNaN(window.pageYOffset)){
+  ymouse += window.pageYOffset;
+  xmouse += window.pageXOffset;
+ } else init.nopy = true;
+ for (var d, i = n; i > -1; --i){
+  d = document.createElement('div'); d.id = 'iemsg' + i;
+  d.style.height = d.style.width = a + 'px';
+  d.appendChild(document.createTextNode(msg[i]));
+  oi.appendChild(d); y[i] = x[i] = Y[i] = X[i] = 0;
+ };
+ o.appendChild(oi); document.body.appendChild(o);
+ setInterval(drag, 25);
+},
+ascroll = function(){
+ ymouse += window.pageYOffset;
+ xmouse += window.pageXOffset;
+ window.removeEventListener('scroll', ascroll, false);
+};
+o.id = 'outerCircleText'; o.style.fontSize = size + 'px';
+if (window.addEventListener){
+ window.addEventListener('load', init, false);
+ document.addEventListener('mouseover', mouse, false);
+ document.addEventListener('mousemove', mouse, false);
+  if (/Apple/.test(navigator.vendor))
+  window.addEventListener('scroll', ascroll, false);
+}
+else if (window.attachEvent){
+ window.attachEvent('onload', init);
+ document.attachEvent('onmousemove', mouse);
+};
+})();
+</script>
+                                                   
+                                            
+
+<style>
+* {
+ box-sizing: border-box;
+}
+                                                  
+                                                      strong {
+                                                    font-weight: 700;
+                                                  }
+                                                  
+                                                  main {
+                                                    min-height: 100vh;
+                                                    width: 100%;
+                                                    display: flex;
+                                                    flex-wrap: wrap;
+                                                    align-content: center;
+                                                    justify-content: center;
+                                                    position: relative;
+                                                    padding: 2em;
+                                                    text-align: center;
+                                                  }
+                                                  main h1, main h3, main p {
+                                                    flex: 100%;
+                                                    max-width: 600px;
+                                                  }
+                                                  main h1 {
+                                                    font: 700 40px/1.3 'Inconsolata', monospace;
+                                                  }
+                                                  main h3 {
+                                                    font: 700 24px/1.3 'Inconsolata', monospace;
+                                                    margin: .5em 0 1.8em;
+                                                  }
+                                                  
+                                                  a {
+                                                    color: #1572b6;
+                                                    text-decoration: none;
+                                                  }
+                                                  a:hover {
+                                                    text-decoration: underline;
+                                                  }
+                                                  
+                                                  .head {
+                                                    position: fixed;
+                                                    animation: 50s headpopping infinite;
+                                                    top: 0;
+                                                    left: 0;
+                                                    transform: translateY(-50vh) rotate(180deg);
+                                                  }
+                                                  
+                                                  @keyframes headpopping {
+                                                    3%, 8% {
+                                                      transform: translateY(-50vh) rotate(180deg);
+                                                    }
+                                                    6% {
+                                                      transform: translateY(0) rotate(180deg);
+                                                    }
+                                                    10% {
+                                                      transform: translateY(-50vh) translateX(110vw) rotate(270deg);
+                                                    }
+                                                    12%, 20% {
+                                                      transform: translateY(50vh) translateX(110vw) rotate(270deg);
+                                                    }
+                                                    15% {
+                                                      transform: translateY(50vh) translateX(80vw) rotate(270deg);
+                                                    }
+                                                    22% {
+                                                      transform: translateY(50vh) translateX(110vw) rotate(0);
+                                                    }
+                                                    24% {
+                                                      transform: translateY(110vh) translateX(110vw) rotate(0);
+                                                    }
+                                                    26%, 30% {
+                                                      transform: translateY(110vh) translateX(70vw) rotate(0);
+                                                    }
+                                                    28% {
+                                                      transform: translateY(80vh) translateX(70vw) rotate(0);
+                                                    }
+                                                    32% {
+                                                      transform: translateY(110vh) translateX(70vw) rotate(90deg);
+                                                    }
+                                                    34% {
+                                                      transform: translateY(110vh) translateX(-50vw) rotate(90deg);
+                                                    }
+                                                    36%, 40% {
+                                                      transform: translateY(30vh) translateX(-50vw) rotate(90deg);
+                                                    }
+                                                    38% {
+                                                      transform: translateY(30vh) translateX(0) rotate(90deg);
+                                                    }
+                                                    42% {
+                                                      transform: translateY(-45vh) translateX(-50vw) rotate(230deg);
+                                                    }
+                                                    44%, 48% {
+                                                      transform: translateY(-45vh) translateX(100vw) rotate(230deg);
+                                                    }
+                                                    46% {
+                                                      transform: translateY(-3vh) translateX(85vw) rotate(230deg);
+                                                    }
+                                                    50% {
+                                                      transform: translateY(-45vh) translateX(100vw) rotate(180deg);
+                                                    }
+                                                    52%, 56% {
+                                                      transform: translateY(-45vh) translateX(50vw) rotate(180deg);
+                                                    }
+                                                    54% {
+                                                      transform: translateY(0) translateX(50vw) rotate(180deg);
+                                                    }
+                                                    58% {
+                                                      transform: translateY(-45vh) translateX(-50vw) rotate(0);
+                                                    }
+                                                    60% {
+                                                      transform: translateY(115vh) translateX(-50vw) rotate(0);
+                                                    }
+                                                    62%, 65% {
+                                                      transform: translateY(75vh) translateX(0) rotate(0);
+                                                    }
+                                                    72% {
+                                                      transform: translateY(85vh) translateX(53vw) rotate(0);
+                                                    }
+                                                    74% {
+                                                      transform: translateY(110vh) translateX(53vw) rotate(0);
+                                                    }
+                                                    76% {
+                                                      transform: translateY(110vh) translateX(53vw) rotate(90deg);
+                                                    }
+                                                    78% {
+                                                      transform: translateY(110vh) translateX(-50vw) rotate(90deg);
+                                                    }
+                                                    80%, 88% {
+                                                      transform: translateY(15vh) translateX(-50vw) rotate(90deg);
+                                                    }
+                                                    82% {
+                                                      transform: translateY(15vh) translateX(0) rotate(90deg);
+                                                    }
+                                                    83% {
+                                                      transform: translateY(15vh) translateX(0) rotate(98deg);
+                                                    }
+                                                    84% {
+                                                      transform: translateY(15vh) translateX(0) rotate(83deg);
+                                                    }
+                                                    85% {
+                                                      transform: translateY(15vh) translateX(0) rotate(92deg);
+                                                    }
+                                                    86% {
+                                                      transform: translateY(15vh) translateX(0) rotate(87deg);
+                                                    }
+                                                    90% {
+                                                      transform: translateY(15vh) translateX(-50vw) rotate(180deg);
+                                                    }
+                                                    92% {
+                                                      transform: translateY(-50vh) translateX(-50vw) rotate(180deg);
+                                                    }
+                                                    94% {
+                                                      transform: translateY(-50vh) translateX(0) rotate(180deg);
+                                                    }
+                                                  }
+                                                  code {
+                                                    display: inline-block;
+                                                    padding: 1px 7px;
+                                                    background: #f1f1f1;
+                                                    border-radius: 5px;
+                                                  }
+                                                  
+                                                  p {
+                                                    margin-bottom: 1.5em;
+                                                  }
+                                                  
+                                                  </style>
+                                                  <img class="head" src="https://i.pinimg.com/originals/13/db/3a/13db3abdd6f3f23ec13aa41a7877c86a.gif" alt="Spider-Man" />                                             
+                                                                                              
+
+  <!-- End of your Music Player thing.-->
+  <!-- Start of your Twitter Feed-->
   <div class="topright2">
   <a id="topright2"class="twitter-timeline" data-width="240" data-height="540" data-theme="dark" href="https://twitter.com/SpicyGoat1?ref_src=twsrc%5Etfw">Tweets by SpicyGoat1</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
+<!-- End of your Twitter feed -->
+<!-- start of bootstrap scripts-->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="script.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!-- end of bootstrap scripts-->
 </body>
+<!-- End of BODY-->
 </html>

@@ -1,3 +1,6 @@
+html {
+  cursor:url("https://static.wikia.nocookie.net/pokemongo/images/4/4f/Mr._Mime.png/revision/latest/scale-to-width-down/128?cb=20180409094251"), auto;
+}
 body{
   background-image: url('https://media2.giphy.com/media/7goCZqFnYE20o/giphy.gif');
 background-color:yellow;
@@ -50,4 +53,9 @@ color:rgb(255, 0, 0);
     border: 15px solid rgb(42, 5, 250);
     padding: 50px;
     margin: 20px;
+}
+
+.p2 {
+ font-family: Georgia, 'Times New Roman', Times, serif; 
+
 }
